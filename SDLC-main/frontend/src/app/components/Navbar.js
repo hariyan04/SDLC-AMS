@@ -173,7 +173,7 @@ export default function Navbar() {
             background: 'rgb(26, 127, 55)',
             WebkitBackgroundClip: 'unset', WebkitTextFillColor: '#fff',
             fontWeight: 900,
-          }}>T</span>
+          }}>Σ</span>
           <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>TCS MaturityIQ</span>
         </Link>
 

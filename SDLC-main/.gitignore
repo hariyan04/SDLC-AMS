@@ -10,3 +10,13 @@ db.json
 *.db
 *.db-shm
 *.db-wal
+# Dev-only utility & seed scripts
+check_questions.cjs
+clear_cache.mjs
+dedup_questions.cjs
+fix_questions_permanent.cjs
+init_db.cjs
+reseed_questions.cjs
+seed_sqlite.cjs
+test_api.js
+pdf_decompressed.txt

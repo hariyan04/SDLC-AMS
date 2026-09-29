@@ -7,7 +7,7 @@ import { useAuth } from '../AuthContext';
 const AREAS = [
   { name: 'Requirements', color: '#da3633', desc: 'AI-powered idea exploration, backlog refinement, bidirectional traceability, and impact analysis across the full requirements lifecycle.' },
   { name: 'Architecture', color: '#1f6feb', desc: 'Architecture synthesisers, automated diagram generation, PR drift detection, compliance advisors, and FinOps modelling.' },
-  { name: 'Development', color: '#2ea043', desc: 'AI coding assistants in agent mode, agentic pull requests, custom MCP scripts, orchestrator/sub-agent architecture, and dependency mapping.' },
+  { name: 'Development', color: 'rgb(26, 127, 55)', desc: 'AI coding assistants in agent mode, agentic pull requests, custom MCP scripts, orchestrator/sub-agent architecture, and dependency mapping.' },
   { name: 'Testing', color: '#d29922', desc: 'E2E workflow automation, synthetic test data creation, defect triaging, test script generation, and vulnerability simulation.' },
   { name: 'Deployment', color: '#8957e5', desc: 'Automated release notes, capacity prediction, self-healing systems, CI/CD quality gates, and pipeline creation using AI.' },
 ];
@@ -17,8 +17,8 @@ const LEVELS = [
   { label: 'L1', title: 'Assisted / Tool',       color: '#1f6feb', desc: 'Basic inline autocomplete, chat assistants, and ad-hoc AI scripts.' },
   { label: 'L2', title: 'Delegated / Assistant', color: '#8957e5', desc: 'AI acts as copilot — opening PRs, drafting specs, reviewing code under supervision.' },
   { label: 'L3', title: 'Supervised Agent',      color: '#d29922', desc: 'AI agents orchestrate multi-step refactoring or test runs with human approval gates.' },
-  { label: 'L4', title: 'Autonomous Workforce',  color: '#2ea043', desc: 'Automated safety nets, autonomous task execution over days, and structured evals.' },
-  { label: 'L5', title: 'Agentic Enterprise',    color: '#3fb950', desc: 'Self-healing production systems, automatic drift remediation, fully autonomous CI/CD workflows.' },
+  { label: 'L4', title: 'Autonomous Workforce',  color: 'rgb(26, 127, 55)', desc: 'Automated safety nets, autonomous task execution over days, and structured evals.' },
+  { label: 'L5', title: 'Agentic Enterprise',    color: 'rgb(26, 127, 55)', desc: 'Self-healing production systems, automatic drift remediation, fully autonomous CI/CD workflows.' },
 ];
 
 function getDomainDiagram(name) {
@@ -71,12 +71,12 @@ function getDomainDiagram(name) {
           <circle cx="55" cy="27" r="3" fill="rgb(26, 127, 55)" />
           <text x="70" y="30" fontFamily="Inter, sans-serif" fontSize="8" fontWeight="500" fill="#94A3B8">main.js</text>
           <path d="M45 50V110" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="45" cy="60" r="4" fill="#2EA043" stroke="#FFFFFF" strokeWidth="1.5" />
-          <path d="M45 60C55 60 60 70 65 75V95C60 100 55 110 45 110" stroke="#2EA043" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="65" cy="85" r="4" fill="#2EA043" stroke="#FFFFFF" strokeWidth="1.5" />
-          <rect x="85" y="50" width="100" height="6" rx="2" fill="#2EA043" fillOpacity="0.15" />
+          <circle cx="45" cy="60" r="4" fill="rgb(26, 127, 55)" stroke="#FFFFFF" strokeWidth="1.5" />
+          <path d="M45 60C55 60 60 70 65 75V95C60 100 55 110 45 110" stroke="rgb(26, 127, 55)" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="65" cy="85" r="4" fill="rgb(26, 127, 55)" stroke="#FFFFFF" strokeWidth="1.5" />
+          <rect x="85" y="50" width="100" height="6" rx="2" fill="rgb(26, 127, 55)" fillOpacity="0.15" />
           <rect x="85" y="62" width="70" height="6" rx="2" fill="#E2E8F0" />
-          <rect x="85" y="74" width="85" height="6" rx="2" fill="#2EA043" fillOpacity="0.15" />
+          <rect x="85" y="74" width="85" height="6" rx="2" fill="rgb(26, 127, 55)" fillOpacity="0.15" />
           <rect x="85" y="86" width="115" height="6" rx="2" fill="#E2E8F0" />
           <rect x="85" y="98" width="50" height="6" rx="2" fill="#E2E8F0" />
         </svg>

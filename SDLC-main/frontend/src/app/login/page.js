@@ -5,18 +5,26 @@ import Link from 'next/link';
 import { useAuth } from '../AuthContext';
 import { useRouter } from 'next/navigation';
 
-const TCS_DOMAINS = [
-  'tcs.com',
-  'tcsiontcs.com',
-  'ioniots.com',
-  'tata.com',
-  'tataconsultancy.com',
+const TCS_BUSINESS_GROUPS = [
+  'BFSI (Banking, Financial Services & Insurance)',
+  'LSHCERU (Life Sciences, Healthcare, Energy, Resources & Utilities)',
+  'Manufacturing',
+  'Retail & Consumer Business',
+  'Communications, Media & Technology',
+  'Hi-Tech',
+  'Travel & Logistics',
+  'Public Services & Government',
+  'iON (Small & Medium Business)',
+  'TCS Interactive',
+  'Quartz (Blockchain & Crypto)',
+  'Ignio (AI/ML Division)',
+  'Other',
 ];
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [domain, setDomain] = useState('tcs.com');
+  const [businessGroup, setBusinessGroup] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const { login, user, loading } = useAuth();
@@ -38,7 +46,7 @@ export default function Login() {
     setSubmitting(true);
 
     // Build full email: if user typed just the local part, append domain
-    const fullEmail = email.includes('@') ? email : `${email}@${domain}`;
+    const fullEmail = email.includes('@') ? email : `${email}@tcs.com`;
 
     const res = await login(fullEmail, password);
     if (res && res.success === false) {
@@ -71,7 +79,7 @@ export default function Login() {
             fontSize: '1.6rem', fontWeight: 900, color: '#fff',
             boxShadow: '0 8px 24px rgba(26,127,55,0.35)',
           }}>
-            T
+            Σ
           </div>
           <h1 style={{ fontSize: '1.55rem', fontWeight: 800, letterSpacing: '-0.03em', marginBottom: '6px', color: 'var(--text-primary)' }}>
             Sign in to TCS MaturityIQ
@@ -108,27 +116,23 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Domain selector */}
+            {/* Business Group selector */}
             <div className="mb-3">
-              <label htmlFor="login-domain" className="form-label" style={{ fontWeight: 600, fontSize: '0.85rem' }}>
-                Domain
+              <label htmlFor="login-bg" className="form-label" style={{ fontWeight: 600, fontSize: '0.85rem' }}>
+                Business Group
               </label>
               <select
-                id="login-domain"
+                id="login-bg"
                 className="form-select"
-                value={domain}
-                onChange={e => setDomain(e.target.value)}
+                value={businessGroup}
+                onChange={e => setBusinessGroup(e.target.value)}
                 style={{ fontSize: '0.9rem' }}
               >
-                {TCS_DOMAINS.map(d => (
-                  <option key={d} value={d}>@{d}</option>
+                <option value="">Select Business Group</option>
+                {TCS_BUSINESS_GROUPS.map(bg => (
+                  <option key={bg} value={bg}>{bg}</option>
                 ))}
               </select>
-              {!email.includes('@') && email && (
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '6px' }}>
-                  Will sign in as: <strong style={{ color: 'rgb(26, 127, 55)' }}>{email}@{domain}</strong>
-                </div>
-              )}
             </div>
 
             {/* Password */}

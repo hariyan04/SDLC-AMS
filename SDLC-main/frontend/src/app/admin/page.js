@@ -661,14 +661,19 @@ export default function AdminDashboard() {
                       key={area}
                       type="button"
                       onClick={() => setSelectedAreaFilter(area)}
-                      className={isActive ? 'btn-premium' : 'btn-premium-outline'}
                       style={{
                         fontSize: '0.78rem',
                         padding: '4px 12px',
                         borderRadius: '20px',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '4px'
+                        gap: '4px',
+                        border: `1.5px solid ${isActive ? FW_COLOR[questionFramework] : 'var(--border-subtle)'}`,
+                        background: isActive ? FW_COLOR[questionFramework] : 'transparent',
+                        color: isActive ? '#fff' : FW_COLOR[questionFramework],
+                        fontWeight: isActive ? 700 : 600,
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
                       }}
                     >
                       {area} <span style={{ opacity: 0.7, fontSize: '0.7rem' }}>({count})</span>
