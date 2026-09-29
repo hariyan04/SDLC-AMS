@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'sdlc-maturity-super-secret-key-12345';
+const JWT_SECRET = process.env.JWT_SECRET || 'gJ02eFMIhiWadL7CXxTEAUcBQpOD6q9VYkv53rswbNz1f4KtGSum8RjnlZoHPy';
 
 export function signToken(user) {
   return jwt.sign(
@@ -23,35 +22,15 @@ export function getUserIdFromRequest(req) {
   try {
     let token = null;
 
-    // Check Authorization: Bearer header first (specific to the tab context)
-    try {
-      const authHeader = req.headers.get('authorization');
-      if (authHeader && authHeader.startsWith('Bearer ')) {
-        token = authHeader.substring(7);
-      }
-    } catch (_) {}
-
-    // Fallback 1: Next.js cookies() store
-    if (!token) {
-      try {
-        const cookieStore = cookies();
-        token = cookieStore.get('token')?.value || null;
-      } catch (_) {}
+    const authHeader = req.headers.get('authorization') || req.headers.get('Authorization');
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.substring(7);
     }
 
-    // Fallback 2: manual header cookie parsing
     if (!token) {
-      try {
-        const cookieHeader = req.headers.get('cookie') || '';
-        const cookieMap = {};
-        cookieHeader.split(';').forEach(c => {
-          const eqIdx = c.indexOf('=');
-          if (eqIdx > -1) {
-            cookieMap[c.slice(0, eqIdx).trim()] = c.slice(eqIdx + 1).trim();
-          }
-        });
-        token = cookieMap['token'] || null;
-      } catch (_) {}
+      const cookieHeader = req.headers.get('cookie') || '';
+      const match = cookieHeader.match(/token=([^;]+)/);
+      if (match) token = match[1];
     }
 
     if (!token) return null;
