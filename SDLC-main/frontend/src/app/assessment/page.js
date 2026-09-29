@@ -223,7 +223,7 @@ function AssessmentInner() {
       setLoading(true);
       const res = await fetch(`/api/questions?framework=${fw}`);
       if (res.ok) {
-        const d = await res.json();
+        const d = await res.json().catch(() => ({}));
         setQuestions(d.questions || []);
       }
     } catch (err) { console.error('Error loading questions:', err); }
@@ -352,8 +352,8 @@ function AssessmentInner() {
         }),
         delayPromise
       ]);
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Failed to save report');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.assessment) throw new Error(data.message || 'Failed to save report - backend server unreachable');
       exitFullscreen();
       router.push(`/report/${data.assessment.id}?generating=1`);
     } catch (err) { console.error('[Assessment] Error:', err); setSubmitting(false); alert(err.message || 'Error saving. Please try again.'); }

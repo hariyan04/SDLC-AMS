@@ -328,8 +328,8 @@ export default function Report({ params }) {
       const [res] = await Promise.all([
         fetch(`/api/assessments/${id}`),
       ]);
-      if (!res.ok) throw new Error('Report not found');
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.assessment) throw new Error(data.message || 'Report not found or backend unreachable');
 
       const assessmentData = data.assessment;
       // Normalize remarks: may be JSON string wrapping {remarks:...} (legacy double-encode)
