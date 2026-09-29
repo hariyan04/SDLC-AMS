@@ -56,8 +56,10 @@ const generalRateLimit = rateLimit({
 app.use(generalRateLimit);
 
 // CORS setup
+const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:3000').replace(/\/$/, '');
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: [frontendUrl, 'http://localhost:3000', 'https://sdlc-ams-frontend.vercel.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
