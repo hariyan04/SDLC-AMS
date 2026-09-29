@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.env
+.env.local
+*.log
+node_portable/
+Thumbs.db
+db.json
+# SQLite database files (may contain secrets in WAL logs)
+*.db
+*.db-shm
+*.db-wal
