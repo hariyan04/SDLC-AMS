@@ -83,7 +83,7 @@ export default function Dashboard() {
       setLoading(true);
       const res = await fetch('/api/assessments');
       if (res.ok) {
-        const data = await res.json();
+        const data = await res.json().catch(() => ({}));
         setAssessments(data.assessments || []);
         setCurrentPage(1);
       }
