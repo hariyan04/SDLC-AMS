@@ -100,7 +100,7 @@ export default function Signup() {
             fontSize: '1.6rem', fontWeight: 900, color: '#fff',
             boxShadow: '0 8px 24px rgba(26,127,55,0.35)',
           }}>
-            T
+            Σ
           </div>
           <h1 style={{ fontSize: '1.55rem', fontWeight: 800, letterSpacing: '-0.03em', marginBottom: '6px', color: 'var(--text-primary)' }}>
             Join TCS MaturityIQ

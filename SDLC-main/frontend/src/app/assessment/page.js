@@ -10,7 +10,7 @@ const FRAMEWORK_META = {
     subtitle: 'Software Delivery Lifecycle',
     tagline: '120 questions · 5 domains',
     areas: ['Requirements', 'Architecture', 'Development', 'Testing', 'Deployment'],
-    color: '#10b981',
+    color: 'rgb(26, 127, 55)',
     icon: 'code',
     desc: `Measure your team's AI maturity across the full software delivery lifecycle — from requirements and architecture through code, testing, and deployment.`
   },
@@ -748,11 +748,11 @@ function AssessmentInner() {
                               display: 'flex', alignItems: 'center', justifyContent: 'center',
                               fontSize: '0.78rem', fontWeight: 700, fontFamily: 'var(--font-mono)',
                               cursor: 'pointer', transition: 'all 0.15s ease',
-                              border: isCurrent ? `2px solid ${fwMeta.color}` : isAnswered ? `1px solid ${fwMeta.color}50` : '1px solid var(--border-subtle)',
-                              background: isCurrent ? `${fwMeta.color}14` : isAnswered ? `${fwMeta.color}18` : 'var(--bg-elevated)',
-                              color: isCurrent ? fwMeta.color : isAnswered ? fwMeta.color : 'var(--text-muted)',
-                              boxShadow: isCurrent ? `0 0 0 3px ${fwMeta.color}25` : 'none',
-                              transform: isCurrent ? 'scale(1.08)' : 'scale(1)',
+                              border: isCurrent ? `2px solid ${fwMeta.color}` : isAnswered ? `2px solid ${fwMeta.color}` : '1px solid var(--border-subtle)',
+                              background: isCurrent ? `${fwMeta.color}22` : isAnswered ? fwMeta.color : 'var(--bg-elevated)',
+                              color: isCurrent ? fwMeta.color : isAnswered ? '#fff' : 'var(--text-muted)',
+                              boxShadow: isCurrent ? `0 0 0 3px ${fwMeta.color}30` : isAnswered ? `0 2px 8px ${fwMeta.color}50` : 'none',
+                              transform: isCurrent ? 'scale(1.08)' : isAnswered ? 'scale(1.03)' : 'scale(1)',
                             }}
                           >
                             {idx + 1}
@@ -775,14 +775,14 @@ function AssessmentInner() {
                 {answeredQuestionsCount}/{totalQuestionsCount} answered. Unanswered default to L0.
               </p>
               <div style={{ display: 'flex', gap: '6px' }}>
-                <button onClick={doSubmitAssessment} className="btn-premium justify-content-center" style={{ flex: 1, padding: '6px', fontSize: '0.75rem' }} disabled={submitting}>
+                <button onClick={doSubmitAssessment} className="btn-premium justify-content-center" style={{ flex: 1, padding: '6px', fontSize: '0.75rem', background: fwMeta.color, borderColor: fwMeta.color }} disabled={submitting}>
                   {submitting ? <span className="spinner-border spinner-border-sm" /> : 'Submit'}
                 </button>
                 <button onClick={() => setShowPartialConfirm(false)} className="btn-premium-outline justify-content-center" style={{ flex: 1, padding: '6px', fontSize: '0.75rem' }}>Cancel</button>
               </div>
             </div>
           ) : (
-            <button onClick={handleSubmitAssessment} className="btn-premium w-100 justify-content-center" style={{ padding: '9px', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }} disabled={submitting}>
+            <button onClick={handleSubmitAssessment} className="btn-premium w-100 justify-content-center" style={{ padding: '9px', fontSize: '0.82rem', display: 'inline-flex', alignItems: 'center', gap: '6px', background: fwMeta.color, borderColor: fwMeta.color }} disabled={submitting}>
               {submitting ? <><span className="spinner-border spinner-border-sm me-2" />Saving…</> : <><span className="material-icons" style={{ fontSize: '1.1rem' }}>bar_chart</span> Generate Report</>}
             </button>
           )}
@@ -987,7 +987,7 @@ function AssessmentInner() {
           </span>
 
           {!isLastQuestion && (
-            <button onClick={handleNext} className="btn-premium" style={{ padding: '9px 22px', fontSize: '0.85rem' }}>
+            <button onClick={handleNext} className="btn-premium" style={{ padding: '9px 22px', fontSize: '0.85rem', background: fwMeta.color, borderColor: fwMeta.color }}>
               {safeQuestionIndex === areaQuestions.length - 1 ? 'Next Section →' : 'Next Question →'}
             </button>
           )}
